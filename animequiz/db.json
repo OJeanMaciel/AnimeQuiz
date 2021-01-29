@@ -4,25 +4,39 @@
     "description": "Teste os seus conhecimentos sobre Animes e vamos ver até onde você consegue chegar!",
     "questions": [
       {
-        "image": "https://media.giphy.com/media/xUOxf3yDKCuwpOlT3i/giphy.gif",
-        "title": "Como fazer um seletor por id via CSS?",
+        "image": "https://media4.giphy.com/media/r5IgwkL8JUfRu/200w.webp?cid=ecf05e474uhrrs5ezfuqj7td9l5njpykmb6wf0l6f1r5gvae&rid=200w.webp",
+        "title": "Quem ensinou o Rasengan para o Naruto?",
         "description": "Essa é pra aquecer",
         "answer": 2,
         "alternatives": [
-          ".elemento",
-          "*elemento",
-          "#elemento",
-          "%elemento"
+          "Kakashi",
+          "Jiraya",
+          "Minato",
+          "Iruka"
         ]
       },
       {
-        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
-        "title": "Como fazer um background gradiente com css?",
+        "image": "https://media0.giphy.com/media/tOEgZXjuJYHvCedZ3c/200w.webp?cid=ecf05e47ie9rrhk2o6rriw0bys76647qjo5wdkigpapsnik8&rid=200w.webp",
+        "title": "Quem derrotou o Cell?",
         "description": "Faz tempo em haha",
-        "answer": 0,
+        "answer": 3,
         "alternatives": [
-           "background: linear-gradient(#e66465, #9198e5);",
-           "background: gradient(#e66465, #9198e5);"
+          "Goku",
+          "Vegetta",
+          "Gohan",
+          "Trunks"
+        ]
+      },
+      {
+        "image": "https://media0.giphy.com/media/Snd51fjjX6s0M/200.webp?cid=ecf05e478z9e9c1mgodo1lawvz4mi6qlh7slmbxwjzut3opj&rid=200.webp",
+        "title": "Qual carta do Yu-Gi o Kaiba rasgou?",
+        "description": "Essa foi sacana!",
+        "answer": 1,
+        "alternatives": [
+          "Dragão Branco de Olhos Azuis",
+          "Dragão Negro de Olhos Vermelhos",
+          "Mago Negro",
+          "Rei Caveira"
         ]
       }
     ],
