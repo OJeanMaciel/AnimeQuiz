@@ -1,13 +1,15 @@
-import React from 'react';
 import fs from 'fs';
-import styled from 'styled-components';
-import Widget from '../../src/components/Widget';
-import QuizLogo from '../../src/components/QuizLogo';
-import QuizBackground from '../../src/components/QuizBackground';
-import Footer from '../../src/components/Footer';
-import GitHubCorner from '../../src/components/GitHubCorner';
-import Contributors from '../contributors';
-
+import NextImage from 'next/image';
+import styled from 'styled-components'
+import db from '../../db.json';
+import Widget from '../../src/components/Widget'
+import QuizLogo from '../../src/components/QuizLogo'
+import QuizBackground from '../../src/components/QuizBackground'
+import Footer from '../../src/components/Footer'
+import GitHubCorner from '../../src/components/GitHubCorner'
+  
+  
+  
 export const QuizContainer = styled.div`
   width: 100%;
   max-width: 350px;
@@ -34,30 +36,27 @@ https://api.screenshotmachine.com?key=${key}&url=${src}&dimension=1024x768&cache
         src={thumbnail}
       />
     </a>
-  );
+  )
 }
 
 export default function ContributorsPage({ contributors }) {
   return (
-    <QuizBackground backgroundImage="https://www.alura.com.br/assets/img/imersoes/react-2/fundo-do-mar-imersao-react-2-01.1609262503.svg">
-      <QuizContainer style={{ margin: 'auto', padding: '5%', maxWidth: '1400px' }}>
+    <QuizBackground backgroundImage={'https://www.alura.com.br/assets/img/imersoes/react-2/fundo-do-mar-imersao-react-2-01.1609262503.svg'}>
+      <QuizContainer style={{ margin: 'auto', padding: '5%', maxWidth:"1400px" }}>
         <QuizLogo />
-        <Widget style={{ maxWidth: '350px', marginLeft: 'auto', marginRight: 'auto' }}>
-          <Widget.Header style={{ justifyContent: 'center' }}>
-            <h1 style={{ fontSize: '25px' }}>Galeria de Projetos</h1>
+        <Widget style={{ maxWidth: '350px', marginLeft: 'auto', marginRight: 'auto', }}>
+          <Widget.Header sytle={{ justifyContent: 'center' }}>
+            <h1 style={{ fontSize: '25px'}}>Galeria de Projetos</h1>
           </Widget.Header>
           <Widget.Content>
-            <p>
-              Estamos muito felizes de contar com a sua participação, confira
-              todos os outros projetos criados durante essa imersão!
-            </p>
+            <p>Estamos muito felizes de contar com a sua participação, confira todos os outros projetos criados durante essa imersão!</p>
           </Widget.Content>
         </Widget>
 
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
             gridGap: '1em',
           }}
         >
@@ -68,8 +67,7 @@ export default function ContributorsPage({ contributors }) {
                   <img width="25" height="25" src={`https://github.com/${user}.png`} style={{ marginRight: '15px', borderRadius: '100%' }} />
                   <h2>
                     <a href={`https://github.com/${user}`} style={{ color: 'inherit' }}>
-                      @
-                      {user}
+                      @{user}
                     </a>
                   </h2>
                 </Widget.Header>
@@ -82,10 +80,11 @@ export default function ContributorsPage({ contributors }) {
         </div>
         <Footer />
       </QuizContainer>
-      <GitHubCorner projectUrl="https://github.com/OJeanMaciel" />
+      <GitHubCorner projectUrl="https://github.com/omariosouto" />
     </QuizBackground>
   );
 }
+
 
 export async function getStaticProps() {
   const contributors = fs.readdirSync('./contributors').map((fileName) => {
@@ -95,13 +94,13 @@ export async function getStaticProps() {
 
     return {
       user,
-      projectUrl,
-    };
-  });
+      projectUrl
+    }
+  })
 
   return {
     props: {
       contributors,
-    },
-  };
+    }
+  }
 }
