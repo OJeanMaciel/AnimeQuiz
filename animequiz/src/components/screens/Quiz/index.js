@@ -169,7 +169,6 @@ export default function QuizPage({ externalQuestions, externalBg }) {
   const bg = externalBg;
 
   function addResult(result) {
-    // results.push(result);
     setResults([
       ...results,
       result,
