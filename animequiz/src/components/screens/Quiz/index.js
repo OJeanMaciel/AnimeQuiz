@@ -1,16 +1,21 @@
 import React from 'react';
-import db from '../db.json';
-import Widget from '../src/components/Widget';
-import QuizLogo from '../src/components/QuizLogo';
-import QuizBackground from '../src/components/QuizBackground';
-import QuizContainer from '../src/components/QuizContainer';
-import AlternativesForm from '../src/components/AlternativesForm';
-import Button from '../src/components/Button';
+import { Lottie } from '@crello/react-lottie';
+
+import Widget from '../../Widget';
+import QuizLogo from '../../QuizLogo';
+import QuizBackground from '../../QuizBackground';
+import QuizContainer from '../../QuizContainer';
+import AlternativesForm from '../../AlternativesForm';
+import Button from '../../Button';
+import BackLinkArrow from '../../BackLinkArrow';
 
 function ResultWidget({ results }) {
   return (
     <Widget>
       <Widget.Header>
+        <BackLinkArrow
+          href="/"
+        />
         Tela de Resultado:
       </Widget.Header>
 
@@ -18,6 +23,7 @@ function ResultWidget({ results }) {
         <p>
           Você acertou
           {' '}
+
           {results.filter((x) => x).length}
           {' '}
           perguntas
@@ -35,6 +41,7 @@ function ResultWidget({ results }) {
             </li>
           ))}
         </ul>
+        
       </Widget.Content>
     </Widget>
   );
@@ -44,12 +51,20 @@ function LoadingWidget() {
   return (
     <Widget>
       <Widget.Header>
-        Carregando...
+        <h3>
+          Carregando ...
+        </h3>
       </Widget.Header>
 
-      <Widget.Content>
-        [Desafio do Loading]
-      </Widget.Content>
+      <img
+        alt="Descrição"
+        style={{
+          width: '100%',
+          height: 'auto',
+          objectFit: 'cover',
+        }}
+        src="https://media3.giphy.com/media/ZL2iRxhnDwtSE/200w.webp?cid=ecf05e47rsa3t9oxqxhpnx4immdpumtg22z48dvykj6bo0gj&rid=200w.webp"
+      />
     </Widget>
   );
 }
@@ -70,6 +85,7 @@ function QuestionWidget({
   return (
     <Widget>
       <Widget.Header>
+        <BackLinkArrow href="/" />
         <h3>
           {`Pergunta ${questionIndex + 1} de ${totalQuestions}`}
         </h3>
@@ -144,13 +160,14 @@ const screenStates = {
   LOADING: 'LOADING',
   RESULT: 'RESULT',
 };
-export default function QuizPage() {
+export default function QuizPage({ externalQuestions, externalBg }) {
   const [screenState, setScreenState] = React.useState(screenStates.LOADING);
   const [results, setResults] = React.useState([]);
-  const totalQuestions = db.questions.length;
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const questionIndex = currentQuestion;
-  const question = db.questions[questionIndex];
+  const question = externalQuestions[questionIndex];
+  const totalQuestions = externalQuestions.length;
+  const bg = externalBg;
 
   function addResult(result) {
     // results.push(result);
@@ -161,11 +178,9 @@ export default function QuizPage() {
   }
 
   React.useEffect(() => {
-
     setTimeout(() => {
       setScreenState(screenStates.QUIZ);
-    }, 1 * 1000);
-    
+    }, 1 * 2000);
   }, []);
 
   function handleSubmitQuiz() {
@@ -178,7 +193,7 @@ export default function QuizPage() {
   }
 
   return (
-    <QuizBackground backgroundImage={db.bg}>
+    <QuizBackground backgroundImage={bg}>
       <QuizContainer>
         <QuizLogo />
         {screenState === screenStates.QUIZ && (
