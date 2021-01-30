@@ -180,7 +180,7 @@ export default function QuizPage({ externalQuestions, externalBg }) {
   React.useEffect(() => {
     setTimeout(() => {
       setScreenState(screenStates.QUIZ);
-    }, 1 * 2000);
+    }, 1 * 1000);
   }, []);
 
   function handleSubmitQuiz() {
