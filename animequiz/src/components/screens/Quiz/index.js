@@ -1,5 +1,4 @@
 import React from 'react';
-import { Lottie } from '@crello/react-lottie';
 
 import Widget from '../../Widget';
 import QuizLogo from '../../QuizLogo';
