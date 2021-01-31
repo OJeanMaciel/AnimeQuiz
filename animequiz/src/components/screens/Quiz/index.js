@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/router'
 
 import Widget from '../../Widget';
 import QuizLogo from '../../QuizLogo';
@@ -9,15 +10,16 @@ import Button from '../../Button';
 import BackLinkArrow from '../../BackLinkArrow';
 
 function ResultWidget({ results }) {
+  const router = useRouter();
   return (
     <Widget>
       <Widget.Header>
-        <BackLinkArrow
-          href="/"
-        />
-        Tela de Resultado:
+        <BackLinkArrow href="/"/>
+        <h3>
+          {`Tela de Resultado: ${router.query.name} `}
+        </h3>
       </Widget.Header>
-
+        
       <Widget.Content>
         <p>
           Você acertou
@@ -178,7 +180,7 @@ export default function QuizPage({ externalQuestions, externalBg }) {
   React.useEffect(() => {
     setTimeout(() => {
       setScreenState(screenStates.QUIZ);
-    }, 1 * 1000);
+    }, 3 * 1000);
   }, []);
 
   function handleSubmitQuiz() {
